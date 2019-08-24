@@ -13,7 +13,7 @@ using namespace std;
 
 int main( int argc, char *argv []) {
 
-  string initialBashOrder="find . -type f -name '*~' -delete";
+  string initialBashOrder="find "+ROOT+" -type f -name '*~' -delete";
   system( initialBashOrder.c_str() );
 
   

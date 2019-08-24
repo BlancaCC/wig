@@ -19,7 +19,7 @@ Requeriments:
 - bash or other compatibles whit the c order system  (iostream library)
 
 Future and under developing features
-
+- autocompletation
 - pandoc compilation 
 - open statistics
 - improve info
