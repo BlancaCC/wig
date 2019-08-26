@@ -7,7 +7,7 @@
 #include "open.h"
 #include "end.h"
 #include "info.h"
-
+#include "statistics.h"  //recordRegister
 
 using namespace std; 
 
@@ -17,13 +17,19 @@ int main( int argc, char *argv []) {
   system( initialBashOrder.c_str() );
 
   
-  if( ! (argc > 2) ) { // no se han introducido los datos correctos
+  if( ! (argc > 2) ) { //arguments miss
     cout <<"holi aquí hay un errorcillo \n" << ERROR << endl;    
   }
   else if (  OPEN.compare( argv[1]) == 0 ) {
-    if (busca(argv[2]) == 0) {  // se encuentra y se abre
-      consistenciaDirectorio(); // creamos el directorio de éste mes si no estaba 
-      openFile(argv[2]);  // se crea
+    string globalPath;
+    if (busca(argv[2],globalPath) == 0) {  // not found
+      consistenciaDirectorio(); // make sure, the month dir is created
+      openFile(argv[2]);  //we create the file
+
+      recordRegister( argv[2], 0, FECHA_ACTUAL+"/"+CARPETAS[0]+"/"+argv[2]);  
+    }
+    else {
+      recordRegister( argv[2], 1, globalPath ); 
     }
   }
   else if (  END.compare( argv[1]) == 0 ) {

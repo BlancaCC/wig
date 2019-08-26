@@ -15,17 +15,21 @@ modificar de un fichero o de variables de entorno ???
 
 using namespace std;
 
-//_________ datos básicos____________
+//_________ basis dates____________
 
-// ruta donde se almacenan los archivos 
+//path to save files
 const string ROOT="/home/blanca/repositorios/escriturias/"; 
 
-//editor en el que abrir el programa 
+//editor to open files
 const string EDITOR="emacs";
 
+//statistics file's name
+const string STAT_FIL_NAM="last_statistics.csv";
+//Don't edit these
+const string STAT_FILE=ROOT+STAT_FIL_NAM;
+const string SPC=","; //csv delimiter
 
-
-//___________ carpetas a crear _________
+//___________ default files status _________
 
 vector<string> CARPETAS={"proyectos","definitivos"}; 
 

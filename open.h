@@ -28,43 +28,53 @@ using namespace std;
 const string OPEN="open";
 
 
-int openFile(string file_name) {
-
-  if( access((FECHA_ACTUAL +"/acabados/"+file_name).c_str() , (R_OK && W_OK) ) != -1  ) {
-
-    //cout << "El fichero existe tanto en modo lectura como de escritura en la carpeta de acabados y se prodece a abrir " << endl;
-    system( (EDITOR+" "+FECHA_ACTUAL +"/acabados/"+file_name+ " &").c_str() ); 
-  }
-   
-  else { // el proyecto no se encuentra en acabados 
-    //cout << "Se trada de un fichero " << endl;
-    system( (EDITOR+" "+FECHA_ACTUAL +"/proyectos/"+file_name+ "& ").c_str() ); 
-      
-  }
-
-  return 0;
-}
-
 /**
-   @brief busca si el archivo en cuestión ya ha sido creado 
-   si es así lo devuelve
-   @param file_name: nombre del fichero a encontrar 
+   @brief search for a file name @param file_name, if it exist, it will be ipened
+  
+   @param file_name to be searched
    @return
-   -1: no se ha podido abrir el directorio ROOT
-   1: Se ha encontrado el archivo y se ha abierto 
-   0: no se ha encontrado el archivo 
+   -1: directory ROOT can not be opened 
+   1: file found and opened
+   0: file has not been found
 */
 
-int busca (string file_name) {
+int busca (string file_name, string & globalPath) {
 
   string global_name; //path desde la carpeta home + nombre
   int salida;
 
   salida=buscaFichero( file_name, global_name);
+  globalPath=global_name;
   //si se ha encontrado 
   if( salida== 1) system( (EDITOR+" "+global_name+ " &").c_str() );
 
   return salida; 
+}
+
+
+/**
+   @brief: create the file
+   @return always return 0
+
+ */
+int openFile(string file_name) {
+
+  system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );
+  
+  /**
+  if( access((FECHA_ACTUAL +"/"+ CARPETAS[1]+"/"+file_name).c_str() , (R_OK && W_OK) ) != -1  ) {
+
+    //cout << "El fichero existe tanto en modo lectura como de escritura en la carpeta de acabados y se prodece a abrir " << endl;
+    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[1]+"/"+file_name+ " &").c_str() ); 
+  }
+   
+  else { // el proyecto no se encuentra en acabados 
+    //cout << "Sesystem( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );  trada de un fichero " << endl;
+    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() ); 
+      
+  }
+  */
+  return 0;
 }
 
 
