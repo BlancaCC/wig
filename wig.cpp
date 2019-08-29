@@ -8,6 +8,7 @@
 #include "end.h"
 #include "info.h"
 #include "statistics.h"  //recordRegister
+#include "git.h" //gitPush
 
 using namespace std; 
 
@@ -17,8 +18,12 @@ int main( int argc, char *argv []) {
   system( initialBashOrder.c_str() );
 
   
-  if( ! (argc > 2) ) { //arguments miss
-    cout <<"holi aquí hay un errorcillo \n" << ERROR << endl;    
+  if( ! (argc > 2) ) {
+    if ( argc == 2 && GIT.compare(argv[1]) == 0 ) {
+      gitPush(); 
+    }
+    else
+      cout <<"holi aquí hay un errorcillo \n" << ERROR << endl;    
   }
   else if (  OPEN.compare( argv[1]) == 0 ) {
     string globalPath;
@@ -32,12 +37,18 @@ int main( int argc, char *argv []) {
       recordRegister( argv[2], 1, globalPath ); 
     }
   }
-  else if (  END.compare( argv[1]) == 0 ) {
-    end( argv[2]); 
+  else if ( END.compare( argv[1]) == 0 ) {
+    string globalPath;
+    if( end(argv[2],globalPath) == 1) { // if file founded and moved
+      
+      recordRegister( argv[2], 2, globalPath ); 
+    }
+    
   }
   else if (INFO.compare(argv[1]) == 0) {
     files( argv[2]); 
   }
+
   else {
 
     //buscamos carpeta donde se encuentre 

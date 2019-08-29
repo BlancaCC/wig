@@ -1,5 +1,10 @@
-wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h
-	g++ wig.cpp -o wig.out 
+wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h
+	g++ wig.cpp -o wig.out
+
+lazyGit.out: lazyGit.cpp
+	g++ lazyGit.cpp -o lazyGit.out
+	cp $@ /home/blanca/repositorios/escriturias/
+
 
 clean:
 	rm -rf *.out *~

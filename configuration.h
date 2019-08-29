@@ -24,14 +24,16 @@ const string ROOT="/home/blanca/repositorios/escriturias/";
 const string EDITOR="emacs";
 
 //statistics file's name
-const string STAT_FIL_NAM="last_statistics.csv";
+const string STAT_FIL_NAM="allStatistics.csv"; 
+const string GIT_STAT="last_statistics.csv";
 //Don't edit these
 const string STAT_FILE=ROOT+STAT_FIL_NAM;
 const string SPC=","; //csv delimiter
 
 //___________ default files status _________
 
-vector<string> CARPETAS={"proyectos","definitivos"}; 
+vector<string> CARPETAS={"proyectos","definitivos"};
+
 
 
 #endif

@@ -24,25 +24,37 @@ using namespace std;
 
 int recordRegister( string order, int number, string longName) {
 
-  fstream fout;
+  fstream statout;
+  fstream gitstat;
   
   time_t now=time(0); // current date/time based on current system
   //"Number of sec since January 1,1970:" << now 
   tm *mytime=localtime( &now); 
 
-  fout.open( STAT_FILE, ios::out | ios::app );
-
+  statout.open( STAT_FILE, ios::out | ios::app );
+  gitstat.open( GIT_STAT, ios::out | ios::app );
   
-  fout << order << SPC
+  statout << order << SPC
        << mytime->tm_mday << SPC //day
-       << mytime->tm_mon + 1 << SPC //month
+       << mytime->tm_mon << SPC //month
        << mytime->tm_year + 1900 << SPC //year
        << mytime->tm_hour + 1 << SPC //hours
        << mytime->tm_min << SPC //minures
        << number << SPC  //0=new 1==existed
        << longName << endl; //path location + name
 
-  fout.close(); 
+   gitstat << order << SPC
+       << mytime->tm_mday << SPC //day
+       << mytime->tm_mon << SPC //month
+       << mytime->tm_year + 1900 << SPC //year
+       << mytime->tm_hour + 1 << SPC //hours
+       << mytime->tm_min << SPC //minures
+       << number << SPC  //0=new 1==existed
+       << longName << endl; //path location + name
+
+  statout.close();
+  gitstat.close(); 
+  
   
   return 0; 
 }
