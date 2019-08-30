@@ -37,7 +37,7 @@ int readableHead() {
   int timesPush;
 
   //read timesPush
-  ifstream readFile (GIT_STAT);
+  ifstream readFile (ROOT+GIT_STAT);
   
   string readout;
 
@@ -53,7 +53,7 @@ int readableHead() {
 
   //Write head commit file
 
-  ofstream outFile(GIT_STAT);
+  ofstream outFile(ROOT+GIT_STAT);
   outFile << "Commit nº " << timesPush;
   outFile.close(); 
 

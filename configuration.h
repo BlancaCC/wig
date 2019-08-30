@@ -12,7 +12,6 @@ modificar de un fichero o de variables de entorno ???
 #include <string>
 #include <vector>
 
-
 using namespace std;
 
 //_________ basis dates____________
