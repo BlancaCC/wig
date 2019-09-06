@@ -31,8 +31,10 @@ const string SPC=","; //csv delimiter
 
 //___________ default files status _________
 
-vector<string> CARPETAS={"proyectos","definitivos"};
-
+vector<string> CARPETAS={"proyectos","definitivos","cerrados"};
+//proyectos to in proccess file
+//definitivos: to finishes
+//cerrados:no finishes but neither working
 
 
 #endif

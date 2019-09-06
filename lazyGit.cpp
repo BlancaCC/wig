@@ -69,7 +69,7 @@ int readableHead() {
 int gitOrder() {
 
   int ret; //system return  0 if ok
-  string commit="git commit -F "+GIT_STAT;
+  string commit="git commit -F "+ROOT+GIT_STAT;
   
   ret = system("git add .");
   ret = (ret== 0)? system(commit.c_str()) : ret;

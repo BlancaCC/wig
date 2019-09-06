@@ -20,7 +20,8 @@
 
 using namespace std;
 
-const string END="end";
+const string END="end"; //definity
+const string CLOSE="close"; 
 
 
 /**
@@ -32,16 +33,22 @@ const string END="end";
    1: file found and move 
    0: file not found
 */
-int end ( string file, string & toPath ) {
+int end ( string file, string & toPath, bool definitive ) {
   
   int salida;
   string path;
+  string destiny;
+
+  if(definitive)
+    destiny = CARPETAS[1];
+  else
+    destiny = CARPETAS[2];
   
   if( (salida=buscaFichero(file,path)) == 1 ) {
     
     //string toPath=path; //path de destino
     toPath=path;
-    toPath.replace(path.find(CARPETAS[0]),CARPETAS[0].length(), CARPETAS[1]); 
+    toPath.replace(path.find(CARPETAS[0]),CARPETAS[0].length(), destiny); 
 
     string mv="mv "+path+" "+toPath;
     

@@ -1,0 +1,3 @@
+- Crear nueva carpeta de archivados (no acabados, pero para reutilizarlos)
+- Carpeta recientes con link simbólicos ¿emacs los abre?
+- opción de poder crear un proyecto y archivar allí los archivos

@@ -39,12 +39,19 @@ int main( int argc, char *argv []) {
   }
   else if ( END.compare( argv[1]) == 0 ) {
     string globalPath;
-    if( end(argv[2],globalPath) == 1) { // if file founded and moved
+    if( end(argv[2],globalPath,true) == 1) { // if file founded and moved
       
       recordRegister( argv[2], 2, globalPath ); 
     }
     
   }
+  else if( CLOSE.compare(argv[1]) == 0 ) {
+      string globalPath;
+    if( end(argv[2],globalPath, false) == 1) { // if file founded and moved
+      
+      recordRegister( argv[2], 3, globalPath ); 
+    }
+    }
   else if (INFO.compare(argv[1]) == 0) {
     files( argv[2]); 
   }

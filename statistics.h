@@ -31,8 +31,8 @@ int recordRegister( string order, int number, string longName) {
   //"Number of sec since January 1,1970:" << now 
   tm *mytime=localtime( &now); 
 
-  statout.open( STAT_FILE, ios::out | ios::app );
-  gitstat.open( GIT_STAT, ios::out | ios::app );
+  statout.open( ROOT+STAT_FILE, ios::out | ios::app );
+  gitstat.open( ROOT+GIT_STAT, ios::out | ios::app );
   
   statout << order << SPC
        << mytime->tm_mday << SPC //day
