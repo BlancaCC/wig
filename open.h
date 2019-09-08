@@ -1,24 +1,15 @@
 #ifndef __OPEN__
 #define __OPEN__
 
-#include<unistd.h>
-#include<sys/types.h>  	/* Primitive system data types for abstraction\
-			   of implementation-dependent data types.
-			   POSIX Standard: 2.6 Primitive System Data Types
-			   <sys/types.h>
-			*/
-#include<sys/stat.h>
-#include<fcntl.h>
-#include<dirent.h>
-#include<time.h>
-
 #include<iostream>
 #include <string>
+#include <vector>
 
 //___cabeceras propias ___
 #include "configuration.h"  
 #include "initial.h"
 #include "sistemaCarpetas.h" //buscaFichero
+#include "tools.h" //is_number
 
 
 using namespace std; 
@@ -54,13 +45,44 @@ int busca (string file_name, string & globalPath) {
 
 /**
    @brief: create the file
-   @return always return 0
+   @return always return system order 
 
  */
-int openFile(string file_name) {
+int openFile(const string file_name) {
 
-  system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );
+  return system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );
+
+}
+
+/**
+   @brief execute shell order editor path
+   @return system orden
+ */
+int openFileAbs (const string absFileName) {
   
+  return system( (EDITOR+" "+absFileName+" & ").c_str() );
+}
+
+/**
+   @brief show index and file defoult out, demand one index open it file
+   @return return 0 if ok
+ */
+int openSwitch() {
+  int ret; 
+  string selectFile;
+  
+  if( (ret=switchFile(selectFile)) == 0) {
+
+    ret=openFileAbs(selectFile); 
+  }
+
+  return ret;
+
+}
+
+#endif
+
+
   /**
   if( access((FECHA_ACTUAL +"/"+ CARPETAS[1]+"/"+file_name).c_str() , (R_OK && W_OK) ) != -1  ) {
 
@@ -74,8 +96,16 @@ int openFile(string file_name) {
       
   }
   */
-  return 0;
-}
+/**
+  if( access((FECHA_ACTUAL +"/"+ CARPETAS[1]+"/"+file_name).c_str() , (R_OK && W_OK) ) != -1  ) {
 
-
-#endif
+    //cout << "El fichero existe tanto en modo lectura como de escritura en la carpeta de acabados y se prodece a abrir " << endl;
+    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[1]+"/"+file_name+ " &").c_str() ); 
+  }
+   
+  else { // el proyecto no se encuentra en acabados 
+    //cout << "Sesystem( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );  trada de un fichero " << endl;
+    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() ); 
+      
+  }
+  */

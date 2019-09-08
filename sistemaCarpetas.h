@@ -21,6 +21,7 @@
 //___ mis includes ___
 
 #include "initial.h"
+#include "tools.h" //isNumber
 
 
 using namespace std;
@@ -111,9 +112,12 @@ int buscaFichero( string file_name, string & path) {
 
 /**
    @brief chearch for spacially dir to dig its contents 
+   @param stop: dir to stop 
+   @param contents: save dirs' names
+   @param auxiliar variable to implemnt recursive DON'T USE
    @return 0 always
  */
-int escaba( vector<string>& stop, string path, vector<string>& contents, bool last=false) {
+int dig( vector<string>& stop, string path, vector<string>& contents, bool last=false) {
   DIR *dir; 
   struct dirent *entry;
   
@@ -129,16 +133,98 @@ int escaba( vector<string>& stop, string path, vector<string>& contents, bool la
 	}
 	//is not end dir
 	else if( find( stop.begin(), stop.end(), elem) == stop.end()) {
-	  escaba( stop, (path+elem+"/"), contents, false); 
+	  dig( stop, (path+elem+"/"), contents, false); 
 	} //we are in last path
 	else { 
-	  escaba( stop, (path+elem), contents, true);
+	  dig( stop, (path+elem), contents, true);
 	} 
       }
     }
   }
 
  return 0; 
-} //int escaba
+} //int dig
+
+
+/**
+   @brief Like dig + absolutes path chearch for spacially dir to dig its contents 
+   @param stop: dir to stop 
+   @param names: save dirs' names
+   @param auxiliar variable to implemnt recursive DON'T USE
+   @return 0 always
+ */
+int dig( vector<string>& stop, string path, vector<string>& names, vector<string>& absPath ,bool last=false) {
+  DIR *dir; 
+  struct dirent *entry;
+  
+  if( (dir = opendir(path.c_str()))!= NULL ) {
+    while( (entry= readdir(dir) ) != NULL) {
+     
+      string elem = entry->d_name;
+      
+      if( elem != "." && elem != ".." ) {
+	//save elem
+	if( last == true) { 
+	  names.push_back(elem);
+	  absPath.push_back(path+"/"+elem);
+	}
+	//is not end dir
+	else if( find( stop.begin(), stop.end(), elem) == stop.end()) {
+	  dig( stop, (path+elem+"/"), names, absPath, false); 
+	} //we are in last path
+	else { 
+	  dig( stop, (path+elem), names, absPath, true);
+	} 
+      }
+    }
+  }
+
+ return 0; 
+} //int dig
+
+
+/**
+   @brief show index and file defoult out, demand one index open it file
+   @return return 1 number incorrec
+ */
+int switchFile( string & selectFile ) {
+
+  int ret = 0; //return 0 if opened correct
+  
+  //show avaibles files
+  vector<string> stopv=vector<string>();
+  stopv.push_back(CARPETAS[0]); //open files only
+  
+  vector< string > filesv = vector<string>();
+  vector< string > paths = vector<string>();
+  int index=0;
+
+  dig( stopv, ROOT, filesv, paths);
+
+  cout << "Files: " << endl;
+  for( auto & myfile : filesv) {
+    cout <<" " <<index << "\t" << myfile << endl;
+    index++;
+  }
+
+  //get number
+  string n;
+  cout << "write number file to be open: " ;
+  cin >> n;
+
+  if ( ! is_number(n) )
+    ret = 1;
+  else {
+    
+    int num= atoi(n.c_str());
+    if ( num >=0 && num < index ) {
+      selectFile= paths[num]; 
+    }
+    else
+      ret=1; 
+  }
+        
+  return ret; 
+}
 
 #endif  

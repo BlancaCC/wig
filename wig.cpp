@@ -19,8 +19,13 @@ int main( int argc, char *argv []) {
 
   
   if( ! (argc > 2) ) {
-    if ( argc == 2 && GIT.compare(argv[1]) == 0 ) {
+    if ( argc == 2 ) {
+      if(GIT.compare(argv[1]) == 0 ) {
       gitPush(); 
+      }
+      else if (OPEN.compare(argv[1]) == 0 ){
+	openSwitch(); 
+      }
     }
     else
       cout <<"holi aquí hay un errorcillo \n" << ERROR << endl;    

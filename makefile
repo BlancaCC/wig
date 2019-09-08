@@ -1,7 +1,7 @@
-wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h
+wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h tools.h
 	g++ wig.cpp -o wig.out
 
-lazyGit.out: lazyGit.cpp
+lazyGit.out: lazyGit.cpp tools.h configuration.h
 	g++ lazyGit.cpp -o lazyGit.out
 	cp $@ /home/blanca/repositorios/escriturias/
 

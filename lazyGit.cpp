@@ -11,20 +11,10 @@
 #include <string>
 
 #include "configuration.h"
+#include "tools.h"
 
 using namespace std;
 
-bool is_number(const  string& s)  {
-    
-  auto it=s.begin();
-  bool is_dig=true; 
-    
-  while (is_dig && it != s.end() ) {
-    is_dig = isdigit(*it)? true : false;
-    it++; 
-  }
-  return is_dig; 
-}
 
 
 /**

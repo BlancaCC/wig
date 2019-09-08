@@ -57,11 +57,11 @@ int files( string mode="" ) {
     return 1; 
   }
 
-  //queremos que empiece a mostrar por el final
+  //show names in inverse order
 
   vector< string > filesv = vector<string>(); 
 
-  escaba( objetives, ROOT, filesv); 
+  dig( objetives, ROOT, filesv); 
 
   cout << "Files: " << endl;
   for( auto & myfile : filesv)
