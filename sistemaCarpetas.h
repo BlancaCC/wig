@@ -184,8 +184,8 @@ int dig( vector<string>& stop, string path, vector<string>& names, vector<string
 
 
 /**
-   @brief show index and file defoult out, demand one index open it file
-   @return return 1 number incorrec
+   @brief show index and file default out, demand one index open it file
+   @return return 1 if no option selected
  */
 int switchFile( string & selectFile ) {
 
@@ -226,5 +226,40 @@ int switchFile( string & selectFile ) {
         
   return ret; 
 }
+
+int switchFiles(vector<string> & selectFile ) {
+  
+  int ret = 0; //return 0 if opened correct
+  
+  //show avaibles files
+  vector<string> stopv=vector<string>();
+  stopv.push_back(CARPETAS[0]); //open files only
+  
+  vector< string > filesv = vector<string>();
+  vector< string > paths = vector<string>();
+  int index=0;
+
+  dig( stopv, ROOT, filesv, paths);
+
+  cout << "Files: " << endl;
+  for( auto & myfile : filesv) {
+    cout <<" " <<index << "\t" << myfile << endl;
+    index++;
+  }
+
+  //get numbers
+  vector<int>numbers=vector<int>();
+  if (numCollect(numbers,index,0) == 0)
+    ret = 1;
+
+  //asign files-numbers
+
+  for (auto & i :numbers){
+    selectFile.push_back( filesv[i]);
+  }
+
+  return ret; 
+}
+
 
 #endif  

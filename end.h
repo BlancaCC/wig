@@ -21,7 +21,8 @@
 using namespace std;
 
 const string END="end"; //definity
-const string CLOSE="close"; 
+const string CLOSE="close";
+const string REMOVE="remove";
 
 
 /**
@@ -46,7 +47,6 @@ int end ( string file, string & toPath, bool definitive ) {
   
   if( (salida=buscaFichero(file,path)) == 1 ) {
     
-    //string toPath=path; //path de destino
     toPath=path;
     toPath.replace(path.find(CARPETAS[0]),CARPETAS[0].length(), destiny); 
 
@@ -63,6 +63,33 @@ int end ( string file, string & toPath, bool definitive ) {
   
 }
 
+/** 
+    @brief end multiple files with a swith standar output
+    
+    @return like end:
+   -1: ROOT could not be opened
+   1: file found and move 
+   0: file not found
+ */
+
+int endSwitch( bool definitive ) {
+
+  int ret=0;
+
+  vector<string> files =vector<string>();
+
+  switchFiles(files);
+  string globalPath; 
+
+  if(definitive)
+    for( auto &fil: files) {
+      ret=end(fil, globalPath,definitive);
+    }
+    
+  return ret;
+}
+
+//crear un remove
 
 
 

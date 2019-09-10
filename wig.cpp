@@ -26,6 +26,12 @@ int main( int argc, char *argv []) {
       else if (OPEN.compare(argv[1]) == 0 ){
 	openSwitch(); 
       }
+      else if (END.compare(argv[1]) == 0 ) {
+	endSwitch(true);
+      }
+      else if (END.compare(argv[1]) == 0 ) {
+	endSwitch(false);
+      }
     }
     else
       cout <<"holi aquí hay un errorcillo \n" << ERROR << endl;    
