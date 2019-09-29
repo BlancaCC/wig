@@ -16,7 +16,6 @@ const string programName="lazyGit.out";
 
 void gitPush() {
   string order=ROOT+programName;
-  system (("cd " + ROOT).c_str() ); //cd ~/repositorios/escriturias/
   system( order.c_str() ); 
 }
 

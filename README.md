@@ -5,20 +5,21 @@ This project aims to have classified editable files as well as an easy managemen
 ATENTION it is under developing
 
 Instructions: 
-
-- configure your editor and directory to save file in configure.h 
-( emacs and ~/repositorio/escriturias are the default ones)
-- write and enter make in your console
-./wig.out open <file name>   to epen a new or existed file
-./wig.out end <file name>    to end an existed file
-./wig.out info {-e | -a | -o} to know existed file 
+In file ![INSTRUCTIONS.txt](./INSTRUCTIONS.txt)
 
 
 
 Requeriments: 
-- bash or other compatibles whit the c order system  (iostream library)
+- bash or other compatibles with the c order system  (iostream library)
+- write in .bashrc
+
+```
+alias wigit="cd ~/repositorios/escriturias/ && wig git && cd"
+alias wig="~/repositorios/wig/wig.out"
+```
 
 Future and under developing features
+- create a proyect 
 - .csv statistics
 - makefile h+.cpp 
 - autocompletation
