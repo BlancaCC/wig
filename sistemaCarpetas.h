@@ -61,9 +61,8 @@ int consistenciaDirectorio() {
       cout << "Se ha creado la carpeta mensual con éxito" << endl;
     }
     
-    return 0; 
   } // end de si la carpeta de éste mes no existía 
- 
+  return 0;  //salida de si la carpeta no existía 
 }
 
 
