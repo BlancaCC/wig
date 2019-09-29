@@ -64,7 +64,7 @@ int openFileAbs (const string absFileName) {
 }
 
 /**
-   @brief show index and file defoult out, demand one index open it file
+   @brief show index and file default out, demand one index open it file
    @return return 0 if ok
  */
 int openSwitch() {
@@ -81,31 +81,3 @@ int openSwitch() {
 }
 
 #endif
-
-
-  /**
-  if( access((FECHA_ACTUAL +"/"+ CARPETAS[1]+"/"+file_name).c_str() , (R_OK && W_OK) ) != -1  ) {
-
-    //cout << "El fichero existe tanto en modo lectura como de escritura en la carpeta de acabados y se prodece a abrir " << endl;
-    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[1]+"/"+file_name+ " &").c_str() ); 
-  }
-   
-  else { // el proyecto no se encuentra en acabados 
-    //cout << "Sesystem( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );  trada de un fichero " << endl;
-    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() ); 
-      
-  }
-  */
-/**
-  if( access((FECHA_ACTUAL +"/"+ CARPETAS[1]+"/"+file_name).c_str() , (R_OK && W_OK) ) != -1  ) {
-
-    //cout << "El fichero existe tanto en modo lectura como de escritura en la carpeta de acabados y se prodece a abrir " << endl;
-    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[1]+"/"+file_name+ " &").c_str() ); 
-  }
-   
-  else { // el proyecto no se encuentra en acabados 
-    //cout << "Sesystem( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() );  trada de un fichero " << endl;
-    system( (EDITOR+" "+FECHA_ACTUAL +"/"+CARPETAS[0] +"/"+file_name+ "& ").c_str() ); 
-      
-  }
-  */

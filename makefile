@@ -1,4 +1,4 @@
-wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h tools.h
+wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h tools.h help.h remove.h
 	g++ wig.cpp -o wig.out
 
 lazyGit.out: lazyGit.cpp tools.h configuration.h

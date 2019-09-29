@@ -9,6 +9,8 @@
 #include "info.h"
 #include "statistics.h"  //recordRegister
 #include "git.h" //gitPush
+#include "help.h" //printInstruction
+#include "remove.h"
 
 using namespace std; 
 
@@ -20,9 +22,16 @@ int main( int argc, char *argv []) {
   
   if( ! (argc > 2) ) {
     if ( argc == 2 ) {
+
+      //git
       if(GIT.compare(argv[1]) == 0 ) {
-      gitPush(); 
+	gitPush(); 
       }
+      //help/manual
+      else if (HELP.compare(argv[1]) == 0 ) {
+	printInstructions(); 
+      }
+      //swiths
       else if (OPEN.compare(argv[1]) == 0 ){
 	openSwitch(); 
       }
@@ -32,9 +41,13 @@ int main( int argc, char *argv []) {
       else if (END.compare(argv[1]) == 0 ) {
 	endSwitch(false);
       }
+      else if (REMOVE.compare(argv[1]) == 0) {
+	removeSwitch(); 
+      }
+
     }
     else
-      cout <<"holi aquí hay un errorcillo \n" << ERROR << endl;    
+      cout <<" \n" << ERROR << endl;    
   }
   else if (  OPEN.compare( argv[1]) == 0 ) {
     string globalPath;
@@ -58,13 +71,20 @@ int main( int argc, char *argv []) {
   }
   else if( CLOSE.compare(argv[1]) == 0 ) {
       string globalPath;
-    if( end(argv[2],globalPath, false) == 1) { // if file founded and moved
+      if( end(argv[2],globalPath, false) == 1) { // if file founded and moved
       
-      recordRegister( argv[2], 3, globalPath ); 
-    }
-    }
+	recordRegister( argv[2], 3, globalPath ); 
+      }
+  }
   else if (INFO.compare(argv[1]) == 0) {
     files( argv[2]); 
+  }
+  else if (REMOVE.compare(argv[1]) == 0) {
+    string globalPath;
+    if ( remove( argv[2],globalPath) == 1 ) {
+      recordRegister( argv[2],4,globalPath);
+      cout << "ha sido borrado";
+    }
   }
 
   else {

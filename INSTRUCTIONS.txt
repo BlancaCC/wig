@@ -1,0 +1,30 @@
+
+- - - - - wellcome to the definitive WIG Guide - - - - - - - 
+
+WIG: writers' interactive gestor
+
+# swith's options
+
+  wig open    : switch gestor to open a proyect
+  wig end     : switch gestor to end a proyect
+  wig close   : switch gestor to close a proyect
+  wig remove  : switch gestor to remove a file
+
+# arguments order
+
+  wig open <name>  : create or open a file name <name>
+  wig end <name>   : end file name <name>
+  wig close <name> : close file name <name>
+  wig remove <name> : irreversible file <name> remove	
+
+# Get information about file hierarchy
+
+ wig info -e || -end  : Only show ended files
+ wig info -o || -open : Only show opened files
+ wig info (-a || -all ) : show all the filles
+
+ wig help :to show this message
+
+
+Last modification of this file: September 2019 by Blanca
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

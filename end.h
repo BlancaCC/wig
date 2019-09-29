@@ -22,7 +22,6 @@ using namespace std;
 
 const string END="end"; //definity
 const string CLOSE="close";
-const string REMOVE="remove";
 
 
 /**
