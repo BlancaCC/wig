@@ -1,16 +1,25 @@
-wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h tools.h help.h remove.h
-	g++ wig.cpp -o wig.out
 
-lazyGit.out: lazyGit.cpp tools.h configuration.h
-	g++ lazyGit.cpp -o lazyGit.out
-	-cp $@ $HOME/repositorios/escriturias/
+HOME = .
+SRC = $(HOME)/src
+INCLUDE = $(HOME)/include
+BIN = $(HOME)/bin
+OBJ = $(HOME)/obj
+LIB = $(HOME)/lib
+
+$(BIN)/wig.out: $(SRC)/wig.cpp $(INCLUDE)/sistemaCarpetas.h $(INCLUDE)/open.h $(INCLUDE)/configuration.h $(INCLUDE)/initial.h $(INCLUDE)/end.h \
+	             $(INCLUDE)/info.h $(INCLUDE)/statistics.h $(INCLUDE)/git.h $(INCLUDE)/tools.h $(INCLUDE)/help.h $(INCLUDE)/remove.h
+	g++ $(SRC)/wig.cpp -o $(BIN)/wig.out -I$(INCLUDE)
+
+$(BIN)/lazyGit.out: $(SRC)lazyGit.cpp $(INCLUDE)tools.h $(INCLUDE)configuration.h
+	g++ $(SRC)lazyGit.cpp -o $(BIN)lazyGit.out -I$(INCLUDE)
+	-cp $@ ($HOME)/repositorios/escriturias/
 
 
 clean:
-	-rm -rf *.out *~
+	-rm -rf $(BIN)/*.out *~
 
 remove_all:
-	-rm -rf *.out *~ 2*
+	-rm -rf $(BIN)/*.out *~ 2*
 
 file_clean:
 	-rm 2*
