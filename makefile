@@ -3,26 +3,25 @@ wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h
 
 lazyGit.out: lazyGit.cpp tools.h configuration.h
 	g++ lazyGit.cpp -o lazyGit.out
-	cp $@ /home/blanca/repositorios/escriturias/
+	-cp $@ $HOME/repositorios/escriturias/
 
 
 clean:
-	rm -rf *.out *~
+	-rm -rf *.out *~
 
 remove_all:
-	rm -rf *.out *~ 2*
+	-rm -rf *.out *~ 2*
 
 file_clean:
-	rm 2*
+	-rm 2*
 
 open:
-	./wig.out open tomatico
+	-./wig.out open tomatico
 
 fin:
-	./wig.out end tomatico
+	-./wig.out end tomatico
 
 info:
-	./wig.out info -a
-	./wig.out info -e
-	./wig.out info -open
-
+	-./wig.out info -a
+	-./wig.out info -e
+	-./wig.out info -open
