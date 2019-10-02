@@ -25,12 +25,12 @@ file_clean:
 	-rm 2*
 
 open:
-	-./wig.out open tomatico
+	-$(BIN)/wig.out open tomatico
 
 fin:
-	-./wig.out end tomatico
+	-$(BIN)/wig.out end tomatico
 
 info:
-	-./wig.out info -a
-	-./wig.out info -e
-	-./wig.out info -open
+	-$(BIN)/wig.out info -a
+	-$(BIN)/wig.out info -e
+	-$(BIN)/wig.out info -open
