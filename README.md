@@ -2,34 +2,28 @@
 
 This project aims to have classified editable files as well as an easy management of these.
 
-ATENTION it is under developing
+ATTENTION: under development
 
-Instructions: 
-In file ![INSTRUCTIONS.txt](./INSTRUCTIONS.txt)
+Instructions: refer to ![INSTRUCTIONS.txt](./INSTRUCTIONS.txt)
+
+Requirements:
+- bash or similar shells with the C order system  (iostream library)
 
 
-
-Requeriments: 
-- bash or other compatibles with the c order system  (iostream library)
-- write in .bashrc
+Note: assuming that this repository is cloned in `/path/to/repository`, modify `.bashrc` with the following lines:
 
 ```
-alias wigit="cd ~/repositorios/escriturias/ && wig git && cd"
-alias wig="~/repositorios/wig/wig.out"
+alias wigit="cd /path/to/repository/escriturias/ && wig git && cd"
+alias wig="/path/to/repository/wig/wig.out"
 ```
 
-Future and under developing features
-- create a proyect 
+Future updates:
+- create a project
 - .csv statistics
-- makefile h+.cpp 
+- makefile
 - autocompletation
-- pandoc compilation 
+- pandoc compilation
 - open statistics
 - improve info
 - install and configuration in makefile options
 - change editor and configuration mode
-
-
-
-
-
