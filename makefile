@@ -1,5 +1,5 @@
-wig.out: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h tools.h help.h remove.h
-	g++ wig.cpp -o wig.out
+wig: wig.cpp sistemaCarpetas.h open.h configuration.h initial.h end.h info.h statistics.h lazyGit.out git.h tools.h help.h remove.h
+	g++ wig.cpp -o wig
 
 lazyGit.out: lazyGit.cpp tools.h configuration.h
 	g++ lazyGit.cpp -o lazyGit.out
@@ -7,22 +7,31 @@ lazyGit.out: lazyGit.cpp tools.h configuration.h
 
 
 clean:
-	rm -rf *.out *~
+	rm -rf *.out *~ wig
 
 remove_all:
-	rm -rf *.out *~ 2*
+	rm -rf *.out *~ 2* wig
 
 file_clean:
 	rm 2*
 
 open:
-	./wig.out open tomatico
+	./wig open tomatico
 
 fin:
-	./wig.out end tomatico
+	./wig end tomatico
 
 info:
-	./wig.out info -a
-	./wig.out info -e
-	./wig.out info -open
+	./wig info -a
+	./wig info -e
+	./wig info -open
+
+install: wig lazyGit.out
+	bash install.sh
+	#sudo cp wig /usr/bin/
+
+unistall:
+	sudo rm /usr/bin/wig
+	sudo rm /usr/bin/wigit
+
 

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dir=$pwd #save actual path
+cd ~/repositorios/escriturias && wig git && cd $dir
