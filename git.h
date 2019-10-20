@@ -12,10 +12,10 @@
 using namespace std;
 
 const string GIT="git";
-const string programName="lazyGit.out"; 
+const string programName=".lazyGit.out"; 
 
 void gitPush() {
-  string order=ROOT+programName;
+  string order=ROOT+programName; 
   system( order.c_str() ); 
 }
 

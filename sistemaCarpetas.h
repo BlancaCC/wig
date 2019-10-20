@@ -83,7 +83,7 @@ int buscaFichero( string file_name, string & path) {
   struct dirent *entrada;  // dirent es un puntero a una estructura
 
   if( (midir = opendir(ROOT.c_str()))== NULL ) {
-    cout << "No se ha podido abrir " << ROOT<< endl;
+    cout << "No se ha podido abrir el fichero a buscar " << ROOT<< endl;
     return -1;
   }
 

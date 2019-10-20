@@ -1,0 +1,4 @@
+EDITOR=emacs
+HISTORY=.history.csv
+RECENT_ACTIONS=.recent_actions.csv
+PATH=/home/blanca/repositorios/escriturias/

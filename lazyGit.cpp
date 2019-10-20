@@ -31,6 +31,7 @@ int readableHead() {
   
   string readout;
 
+  cout << "El archivo a leer es " << ROOT+GIT_STAT << endl; 
   getline(readFile,readout);
   cout << "El dato leído es " << readout << endl;
   if (is_number(readout)) {
